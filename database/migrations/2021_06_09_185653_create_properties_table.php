@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePropertyTable extends Migration
+class CreatePropertiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreatePropertyTable extends Migration
      */
     public function up()
     {
-        Schema::create('property', function (Blueprint $table) {
+        Schema::create('properties', function (Blueprint $table) {
             $table->id();
             $table->string('slug');
             $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
@@ -24,7 +24,7 @@ class CreatePropertyTable extends Migration
             $table->integer('asking_price');
             $table->string('status')->default('For Sale');
             $table->longText('desciption');
-            $table->foreignId('location_id')->constrained('location')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('location_id')->constrained('locations')->onUpdate('cascade')->onDelete('cascade');
             $table->integer('latitude');
             $table->integer('longitude');
             $table->string('property_type');
@@ -48,7 +48,7 @@ class CreatePropertyTable extends Migration
     public function down()
     {
         $table->dropForeign(['user_id', 'location_id']);
-        Schema::dropIfExists('property');
+        Schema::dropIfExists('properties');
        
     }
 }
