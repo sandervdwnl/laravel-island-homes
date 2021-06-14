@@ -16,13 +16,13 @@ Property Posts:
 User Profiles:
 
 V   Admin can view all users 
-**  Admin can delete all users
+V  Admin can delete all users
 V   Admin can edit all users
 
-    User can create user profile
-    User can view own/other user profile
-    User can edit own user profile
-    User can delete own user profile
+V    User can create user profile
+V    User can view own user profile
+V    User can edit own user profile
+V    User can delete own user profile
 
 Contact User
 

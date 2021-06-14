@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 
 
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,11 +43,16 @@ Route::group(['middleware' => 'auth'], function()
     
     // User route group
     Route::group([
+        // prefix every URL in this group with /user/
         'prefix' => 'user',
         'as' => 'user',
     ], function()
     {
         // Route to /properties/
         Route::get('properties', [\App\Http\Controllers\User\PropertyController::class, 'index'])->name('properties.index');
+        Route::get('{id}', [\App\Http\Controllers\User\ProfileController::class, 'show']);
+        Route::get('{id}/edit', [\App\Http\Controllers\User\ProfileController::class, 'edit']);
+        Route::put('{id}/update', [\App\Http\Controllers\User\ProfileController::class, 'update']);
+        Route::delete('{id}/delete', [\App\Http\Controllers\User\ProfileController::class, 'destroy']);
     });
 });

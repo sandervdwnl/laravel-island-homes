@@ -20,6 +20,11 @@
                         {{ __('Users') }}
                     </x-nav-link>
                     @endif
+                    @if( Auth::user()->is_admin == false)
+                    <x-nav-link href="user/{{ Auth::user()->id }}" :active="request()->routeIs('profile')">
+                        {{ __('User Profile') }}
+                    </x-nav-link>
+                    @endif
                 </div>
             </div>
 

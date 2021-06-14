@@ -414,6 +414,12 @@
         </div>
         @endif
 
+        @if (session('success'))
+        <div class="py-4 bg-green-200 text-bold font-lg text-center w-full">
+            {{ session('success') }}
+        </div>
+        @endif
+
         <h1>Welcome Page</h1>
 
     </div>
