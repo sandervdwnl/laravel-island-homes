@@ -117,6 +117,6 @@ class UserController extends Controller
     {
         $user = User::where('id', $id)->first()->delete();
 
-        return back();
+        return redirect('/admin/users')->with('success', 'User deleted');
     }
 }

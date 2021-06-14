@@ -14,19 +14,21 @@
             </div>
             @endif
 
+            @if (session('success'))
+            <div class="py-4 bg-green-200 text-bold font-lg text-center">
+                {{ session('success') }}
+            </div>
+            @endif
+
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-4">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <p>This is the Admin - Users Overview!</p>
                 </div>
-                <div class="p-6 bg-green-300 hover:bg-green-200 border-b border-gray-200 block">
+                <div class="py-2 px-4 bg-green-300 hover:bg-green-200 border-b border-gray-200 w-2/12 mt-4">
                     <a href="/admin/users/create">Create New User</a>
                 </div>
 
-
-
                 <div class="container my-4 pb-2">
-
-
 
                     <table class="shadow-lg bg-white mx-auto w-full">
                         <tr>
@@ -53,7 +55,7 @@
                                 <form action="/admin/users/{{ $user->id }}" method="post">
                                     @csrf
                                     @method('delete')
-                                    <input type="submit" value="Delete" class="bg-white cursor-pointer px-2 py-1 block">
+                                    <input type="submit" value="Delete" class="bg-white cursor-pointer px-2 py-1 block" onclick="return confirm('Are you sure you want to delete this user')">
                                 </form>
                             </td>
                         </tr>
