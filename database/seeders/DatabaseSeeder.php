@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         \App\Models\User::factory(10)->create();
-        \App\Models\Property::factory(2)->create();
+        \App\Models\Property::factory(3)->create();
        
         // $this->call([
         //     LocationSeeder::class,
