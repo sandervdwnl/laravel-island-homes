@@ -10,6 +10,7 @@ class Property extends Model
     use HasFactory;
 
     protected $fillable = [
+        'title',
         'slug',
         'user_id',
         'street',
@@ -18,7 +19,7 @@ class Property extends Model
         'city',
         'asking_price',
         'status',
-        'desciption',
+        'description',
         'location_id',
         'latitude',
         'longitude',

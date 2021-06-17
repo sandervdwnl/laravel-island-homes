@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,11 +47,13 @@ Route::group(['middleware' => 'auth'], function()
         'as' => 'user',
     ], function()
     {
-        // Route to /properties/
-        Route::get('properties', [\App\Http\Controllers\User\PropertyController::class, 'index'])->name('properties.index');
         Route::get('{id}', [\App\Http\Controllers\User\ProfileController::class, 'show']);
         Route::get('{id}/edit', [\App\Http\Controllers\User\ProfileController::class, 'edit']);
         Route::put('{id}/update', [\App\Http\Controllers\User\ProfileController::class, 'update']);
         Route::delete('{id}/delete', [\App\Http\Controllers\User\ProfileController::class, 'destroy']);
     });
+
+    // Route to Properties
+    Route::resource('properties', 'App\Http\Controllers\User\PropertyController');
+   
 });

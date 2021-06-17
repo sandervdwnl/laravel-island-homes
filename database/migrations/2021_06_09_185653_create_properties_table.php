@@ -23,7 +23,7 @@ class CreatePropertiesTable extends Migration
             $table->string('city');
             $table->integer('asking_price');
             $table->string('status')->default('For Sale');
-            $table->longText('desciption');
+            $table->longText('description');
             $table->foreignId('location_id')->constrained('locations')->onUpdate('cascade')->onDelete('cascade');
             $table->integer('latitude');
             $table->integer('longitude');

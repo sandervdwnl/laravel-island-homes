@@ -16,7 +16,7 @@ Property Posts:
 User Profiles:
 
 V   Admin can view all users 
-V  Admin can delete all users
+V   Admin can delete all users
 V   Admin can edit all users
 
 V    User can create user profile
@@ -28,3 +28,10 @@ Contact User
 
     User can contact other User
 
+TODO:
+
+Authorization: user->id == auth::id. 
+Policy of Gate? Guest may not visit profiles.
+
+Admin Users view display num properties. 
+Join?
