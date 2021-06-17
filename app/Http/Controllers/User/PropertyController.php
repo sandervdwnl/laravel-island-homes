@@ -94,9 +94,11 @@ class PropertyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        $property = Property::where('slug', $slug)->first();
+
+        return view('user.properties.show')->with('property', $property);
     }
 
     /**

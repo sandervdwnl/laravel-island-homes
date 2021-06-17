@@ -53,31 +53,31 @@
                                     </div>
                                     <h2 class="text-center text-xl font-bold w-full my-4">Adress</h2>
 
-                                    <div class="mb-4 xl:mb-8 w-full xl:w-1/2 px-4">
+                                    <div class="mb-4 xl:mb-8 w-full xl:w-2/3 px-4">
                                         <label class="block text-gray-500 text-base font-bold mb-2" for="street">
                                             Street
                                         </label>
                                         <input class="block shadow appearance-none border rounded w-full py-2 px-3 text-gray-500 leading-tight focus:outline-none focus:shadow-outline" id="street" name="street" type="text" placeholder="Name of the street" value="{{ old('street') }}" required>
                                     </div>
-                                    <div class="mb-4 xl:mb-8 w-full xl:w-1/2 px-4">
+                                    <div class="mb-4 xl:mb-8 w-full xl:w-1/3 px-4">
                                         <label class="block text-gray-500 text-base font-bold mb-2" for="number">
                                             Number
                                         </label>
                                         <input class="block shadow appearance-none border rounded w-full py-2 px-3 text-gray-500 leading-tight focus:outline-none focus:shadow-outline" id="number" name="number" type="text" placeholder="Appt/house number" value="{{ old('number') }}" required>
                                     </div>
-                                    <div class="mb-4 xl:mb-8  w-full xl:w-1/4 px-4">
+                                    <div class="mb-4 xl:mb-8  w-full xl:w-1/3 px-4">
                                         <label class="block text-gray-500 text-base font-bold mb-2" for="zip_code">
                                             Zip Code
                                         </label>
                                         <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-500 leading-tight focus:outline-none focus:shadow-outline" id="zip_code" name="zip_code" type="text" placeholder="12345" value="{{ old('zip_code') }}" required>
                                     </div>
-                                    <div class="mb-4 xl:mb-8 w-full xl:w-1/2 px-4">
+                                    <div class="mb-4 xl:mb-8 w-full xl:w-1/3 px-4">
                                         <label class="block text-gray-500 text-base font-bold mb-2" for="city">
                                             City
                                         </label>
                                         <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-500 leading-tight focus:outline-none focus:shadow-outline" id="city" name="city" type="text" placeholder="New Tork" value="{{ old('city') }}" required>
                                     </div>
-                                    <div class="mb-4 xl:mb-8 w-full xl:w-1/4 px-4">
+                                    <div class="mb-4 xl:mb-8 w-full xl:w-1/3 px-4">
                                         <label class="block text-gray-500 text-base font-bold mb-2" for="location">
                                             Location
                                         </label>
