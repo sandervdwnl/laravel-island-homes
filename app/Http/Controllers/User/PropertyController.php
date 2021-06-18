@@ -20,7 +20,9 @@ class PropertyController extends Controller
      */
     public function index()
     {
-        return view('user.properties.index');
+        $properties = Property::all();
+        return view('user.properties.index')
+        ->with('properties', $properties);
     }
 
     /**
@@ -51,7 +53,6 @@ class PropertyController extends Controller
             'asking_price' => 'required|numeric|min:10000|max:1000000000',
             'street' => 'required|min:3',
             'number' => 'required',
-            'zip_code' => 'required',
             'city' => 'required|min:3',
             'latitude' => 'required|between:9,12',
             'longitude' => 'required|between:9,12',
@@ -61,7 +62,7 @@ class PropertyController extends Controller
             'bedrooms' => 'required|numeric',
             'bathrooms' => 'required|numeric',
             'description' => 'required|min:100',
-            'feat_image_path' => 'required|image', 
+            'feat_image_path' => 'required|image|dimensions:min_width=1500,min_height=800|max:2500', 
         ]);
 
         // Generate random number for filename
@@ -116,12 +117,13 @@ class PropertyController extends Controller
             // Generate images
             foreach($files as $file) {
                 
-                // Generate random number
-                $rand = rand(99,999) * rand(99,999);
+                // Generate random number for filename
+                $rand = $property->id . '-' . rand(99,999) * rand(99,999);
                 
-                // Full size
+                // Create Full size image
                 ImageIvn::make($file)->resize(1200,900)->save(public_path('img/' . $rand . '_full.jpg'));
 
+                // Save in DB
                 $image = new Image([
                     'property_id' => $property->id,
                     'image_path' => 'img/' . $rand . '_full.jpg',
@@ -129,8 +131,10 @@ class PropertyController extends Controller
                 ]);
                 $image->save();
 
+                // Create thumbnail size image
                 ImageIvn::make($file)->resize(1200,900)->save(public_path('img/' . $rand . '_thumb.jpg'));
 
+                // Store in DB
                 $image = new Image([
                     'property_id' => $property->id,
                     'image_path' => 'img/' . $rand . '_thumb.jpg',

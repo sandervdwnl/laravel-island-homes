@@ -13,6 +13,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
+    <link rel="stylesheet" href="{{ asset('css/lightbox.min.css') }}">
 
 
     <!-- Scripts -->
@@ -26,7 +27,6 @@
         {{ $slot }}
     </div>
 
-
-
+    <script src="{{ asset('js/lightbox-plus-jquery.min.js') }}"></script>
 </body>
 </html>

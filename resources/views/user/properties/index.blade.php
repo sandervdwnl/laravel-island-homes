@@ -25,5 +25,19 @@
                 @endif
             </div>
         </div>
+
+        <div class="main">
+            <div class="properties-grid grid grid-cols-3 gap-2 xl:grid-cols-4 p-4 ">
+                @foreach ($properties as $property)
+                <div class="property-card">
+                    <a href="{{ $property->slug }}">
+                        <img src="{{ asset($property->feat_image_path) }}" alt="{{ $property->title }}">
+                    </a>
+                    <p class="text-center my-4 font-bold">USD $ {{ $property->asking_price }},-</p>
+                </div>
+                @endforeach
+            </div>
+        </div>
+
     </div>
 </x-guest-layout>
