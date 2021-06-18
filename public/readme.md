@@ -35,3 +35,6 @@ Policy of Gate? Guest may not visit profiles.
 
 Admin Users view display num properties. 
 Join?
+
+Guest vs App Layout
+User is logged in to show property, change
