@@ -31,9 +31,23 @@
 
                 <h2 class="text-center text-2xl font-bold mb-6">{{ $property->title }}</h2>
 
+                <div class="featured_image w-full mb-4">
+                    <img src="{{ asset($property->feat_image_path) }}" alt="{{ $property->title }}">
+                </div>
+
                 <div>
                     <p class="text-2xl font-bold">Status: <span class="font-normal">{{ $property->status }}</span></p>
                     <p class="text-2xl font-bold">Price: <span class="font-normal">USD $ {{ number_format($property->asking_price) }},- </span></p>
+                </div>
+
+                <div class="gallery w-full flex">
+                    @foreach ($property->images as $image)
+
+                    @if ($image->type == 'thumb')
+                    <img src="{{ asset($image->image_path) }}" alt="{{ $property->title }} Image" class="w-1/4 xl:w-1/5">
+                    @endif
+
+                    @endforeach
                 </div>
 
                 <div class="description mb-4">
@@ -43,7 +57,7 @@
 
                 <h2 class="text-center text-2xl font-bold my-6">Location</h2>
 
-                <p class="text-gray-700 mb-4"><b>{{ $property->street }} {{ $property->number }}</b> In <b>{{ $property->city }}, {{ $property->location->name }}</b></p>
+                <p class="text-gray-700 mb-4"><b>{{ ucwords($property->street) }} {{ $property->number }}</b> In <b>{{ ucwords($property->city) }}, {{ $property->location->name }}</b></p>
 
                 <div>
                     {{-- Embedded OSM Map with manipulated URL --}}

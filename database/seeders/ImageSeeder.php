@@ -18,6 +18,7 @@ class ImageSeeder extends Seeder
         DB::table('images')->insert([
             'image_path' => Str::random(10),
             'property_id' => \App\Models\Property::inRandomOrder()->first()->id,
+            'size' => 'thumb'
         ]);
     }
 }

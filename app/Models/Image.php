@@ -14,6 +14,8 @@ class Image extends Model
         'property_id',
     ];
 
+    protected $guarded = [];
+
     // Eloquent relationships
 
     public function property()

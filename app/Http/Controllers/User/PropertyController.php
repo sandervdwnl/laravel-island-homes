@@ -6,9 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Location;
 use App\Models\Property;
+use App\Models\Image;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
-
+use Intervention\Image\Facades\Image as ImageIvn;
 
 class PropertyController extends Controller
 {
@@ -43,24 +44,38 @@ class PropertyController extends Controller
      */
     public function store(Request $request)
     {
+     
+        // Validate input
         $request->validate([
-            'title' => 'required|min:10 max:50',
+            'title' => 'required|unique:properties|min:10 max:50',
             'asking_price' => 'required|numeric|min:10000|max:1000000000',
             'street' => 'required|min:3',
             'number' => 'required',
             'zip_code' => 'required',
             'city' => 'required|min:3',
-            'latitude' => 'required|numeric',
-            'longitude' => 'required|numeric',
+            'latitude' => 'required|between:9,12',
+            'longitude' => 'required|between:9,12',
             'built_in' => 'required|numeric',
             'area_size_indoor' => 'required|numeric',
             'area_size_outdoor' => 'required|numeric',
             'bedrooms' => 'required|numeric',
             'bathrooms' => 'required|numeric',
-            'description' => 'required|min:100'
+            'description' => 'required|min:100',
+            'feat_image_path' => 'required|image', 
         ]);
 
+        // Generate random number for filename
+        $random = rand(1111,9999) * rand(1, 9);
 
+        // Validate Featured Image
+        if($request->hasFile('feat_image_path'))
+        {
+            // Make a full size imaye
+            ImageIvn::make($request->feat_image_path)->resize(1500,800)->save(public_path('img/' . $random . '_feat.jpg'))
+            ->resize(400,300)->save(public_path('img/' . $random . '_feat_thumb.jpg'));
+        }
+
+        // Store Property
         $property = new Property([
             'title' => $request->title,
             'slug' => Str::slug($request->title),
@@ -81,9 +96,50 @@ class PropertyController extends Controller
             'bedrooms' => $request->bedrooms,
             'bathrooms' => $request->bathrooms,
             'description' => $request->description,
+            'feat_image_path' => 'img/' . $random . '_feat.jpg',
         ]);
-
         $property->save();
+
+        /**
+         * Uploaded gallery images are stored with the use of the property ID as FK
+         */
+
+        // Validate Gallery Images
+        if($request->hasFile('file'))
+        {
+            $request->validate([
+                'file.*' => 'image'
+            ]);
+
+            $files = $request->file('file');
+
+            // Generate images
+            foreach($files as $file) {
+                
+                // Generate random number
+                $rand = rand(99,999) * rand(99,999);
+                
+                // Full size
+                ImageIvn::make($file)->resize(1200,900)->save(public_path('img/' . $rand . '_full.jpg'));
+
+                $image = new Image([
+                    'property_id' => $property->id,
+                    'image_path' => 'img/' . $rand . '_full.jpg',
+                    'size' => 'full',
+                ]);
+                $image->save();
+
+                ImageIvn::make($file)->resize(1200,900)->save(public_path('img/' . $rand . '_thumb.jpg'));
+
+                $image = new Image([
+                    'property_id' => $property->id,
+                    'image_path' => 'img/' . $rand . '_thumb.jpg',
+                    'size' => 'thumb',
+                ]);
+                $image->save();
+            }
+        }
+        
 
         return $this->index()->with(["message" => "Property "  . $property->name . " is added"]);
     }

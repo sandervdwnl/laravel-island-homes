@@ -1,4 +1,6 @@
+//////////////////
 Roles: Guest(not logged in), User(logged in) and Admin(is_admin)
+//////////////////
 
 Property Posts:
 
@@ -28,7 +30,10 @@ Contact User
 
     User can contact other User
 
+//////////////////
 TODO:
+//////////////////
+
 
 Authorization: user->id == auth::id. 
 Policy of Gate? Guest may not visit profiles.
@@ -38,3 +43,10 @@ Join?
 
 Guest vs App Layout
 User is logged in to show property, change
+
+///////////////
+Packages
+///////////////
+
+TinyMCE
+Intervention Image
