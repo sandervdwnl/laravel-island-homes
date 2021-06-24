@@ -8,12 +8,12 @@ Property Posts:
     Admin can delete all posts
     Admin can edit/approve all posts 
 
-    User can create posts
-    User can view all/own posts
-    User can edit own posts
-    User can delete own posts
+V    User can create posts
+V    User can view all/own posts
+V    User can edit own posts
+V    User can delete own posts
 
-    Guest can view all posts (without contact info)
+V    Guest can view all posts (without contact info)
 
 User Profiles:
 
@@ -44,9 +44,15 @@ Join?
 Guest vs App Layout
 User is logged in to show property, change
 
+Style all class btn
+btn m-4 bg-blue-500 text-white py-2 px-4 rounded shadow focus:bg-blue-300
+
+Category filters
+
 ///////////////
 Packages
 ///////////////
 
 TinyMCE
 Intervention Image
+Tailwind Typography

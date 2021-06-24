@@ -24,6 +24,9 @@
                     <x-nav-link href="user/{{ Auth::user()->id }}" :active="request()->routeIs('profile')">
                         {{ __('User Profile') }}
                     </x-nav-link>
+                    <x-nav-link href="/properties" :active="request()->routeIs('properties')">
+                        {{ __('My Properties') }}
+                    </x-nav-link>
                     @endif
                 </div>
             </div>

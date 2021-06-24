@@ -1,0 +1,21 @@
+a {
+    /* blue-500 */
+    color: #3B82F6; 
+}
+
+a:hover {
+    /* blue-300 */
+    color: #93C5FD; 
+}
+
+h1 {
+    /* pink-500 */
+    color: #EC4899;
+    letter-spacing: 2px;
+}
+
+h2 {
+    /* pink-500 */
+    color: #EC4899;
+}
+
