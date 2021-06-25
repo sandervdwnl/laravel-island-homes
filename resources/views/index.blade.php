@@ -31,11 +31,21 @@
                 @foreach ($properties as $property)
                 <div class="property-card">
                     <a href="/properties/{{ $property->slug }}">
+                        <h3 class="text-center font-bold text-xl mb-4">{{ $property->title }}</h3>
                         {{-- Display Thumbnail --}}
                         <img src="{{ str_replace ('.jpg', '_thumb.jpg', asset($property->feat_image_path)) }}" alt="{{ ucwords($property->title) }}">
                     </a>
                     <div class="property-details py-2">
-                        <p class="text-center font-bold"><a href="/properties/{{ $property->slug }}" class="link">{{ ucwords($property->street) }} {{ $property->number }}</a></p>
+                        <div class="main-details flex mb-4 font-bold">
+                            @if($property->status == 'For Sale')
+                            <div class="bg-green-400 text-white capitalize py-1 px-4 mr-4">For Sale</div>
+                            @elseif($property->status == 'Pending')
+                            <div class="bg-yellow-500 text-white capitalize py-1 px-4 mr-4">Pending</div>
+                            @else
+                            <div class="bg-red-400 text-white capitalize py-1 px-4 mr-4">Sold</div>
+                            @endif
+                            <p class="text-center py-1 px-4">{{ ucwords($property->street) }} {{ $property->number }}</a></p>
+                        </div>
                         <p class="text-center font-bold text-gray-500 mb-2">{{ ucwords($property->city) }}, {{ $property->location->name }}</p>
                         <p class="text-center font-bold"><span class="price"></span>USD $ {{ number_format($property->asking_price) }},-</p>
                     </div>

@@ -14,7 +14,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $properties = Property::all();
+        $properties = Property::where('approved', '1')->get();
         return view('index')
         ->with('properties', $properties);
     }

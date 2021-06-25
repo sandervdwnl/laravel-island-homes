@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Property;
 
 class PropertyController extends Controller
 {
@@ -14,7 +15,9 @@ class PropertyController extends Controller
      */
     public function index()
     {
-        return view('admin.properties.index');
+        $properties = Property::orderBy('created_at', 'desc')->get();
+
+        return view('admin.properties.index')->with('properties', $properties);
     }
 
     /**
@@ -57,7 +60,7 @@ class PropertyController extends Controller
      */
     public function edit($id)
     {
-        dd('edit');
+        
     }
 
     /**
@@ -69,8 +72,41 @@ class PropertyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $property = Property::where('id', $id)->first();
+        
+        // Check if Approval is checked
+        if (isset($request->approved)) {
+            $approval = 1;
+        } else {
+            $approval = 0;
+        }
+
+        // Check if Featured is checked
+        if (isset($request->featured)) {
+            $feat = 1;
+        } else {
+            $feat = 0;
+        }
+
+        // Check if Featured is checked
+        if (isset($request->status)) {
+            $status = $request->status;
+        } else {
+            $status = $property->status;
+        }
+        
+        // Update DB
+        $property->update([
+            'approved' => $approval,
+            'is_featured' => $feat,
+            'status' => $status,
+        ]);
+
+        return back();
+        
     }
+
+    
 
     /**
      * Remove the specified resource from storage.
@@ -80,6 +116,8 @@ class PropertyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $property = Property::where('id', $id)->first()->delete();
+
+        return redirect('/admin/properties')->with('success', 'Property deleted');
     }
 }

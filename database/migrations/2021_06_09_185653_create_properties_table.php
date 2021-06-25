@@ -25,8 +25,8 @@ class CreatePropertiesTable extends Migration
             $table->string('status')->default('For Sale');
             $table->longText('description');
             $table->foreignId('location_id')->constrained('locations')->onUpdate('cascade')->onDelete('cascade');
-            $table->integer('latitude');
-            $table->integer('longitude');
+            $table->decimal('latitude', 8, 6);
+            $table->decimal('longitude', 9, 6);
             $table->string('property_type');
             $table->integer('built_in');
             $table->integer('area_size_indoor');
