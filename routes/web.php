@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ContactController;
-
+use App\Http\Controllers\SearchController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,8 +24,13 @@ Route::get('/home', [PageController::class, 'home'])->name('home');
 // Contact Page
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
+// Contact Form Validation
 Route::post('/contact/validate', [ContactController::class, 'validateContactRequest'])->name('validateContact');
 
+// Search
+Route::get('/search', [SearchController::class, 'search'])->name('search');
+
+// Dashboard
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
@@ -64,5 +69,4 @@ Route::group(['middleware' => 'auth'], function()
     // Route to Properties
     Route::resource('properties', 'App\Http\Controllers\User\PropertyController');
 
-    
 });

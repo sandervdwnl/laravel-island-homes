@@ -26,16 +26,17 @@
                         <label for="Bedrooms">Min Bedrooms</label>
                         <select name="bedrooms-filter" class="mx-2">
                             @for($i = 1; $i < $max_bedrooms->bedrooms + 1; $i++)
-                                <option value="{{ $i }}">{{ $i }}</option>
+                                <option value="{{ $i }}" @if(isset($selected_min_bedrooms) && $i==$selected_min_bedrooms) selected @endif>{{ $i }}</option>
                                 @endfor
                         </select>
-                        {{-- Bathrooms --}}
+                        {{-- Bedrooms --}}
                         <label for="Bathrooms">Min Bathrooms</label>
                         <select name="bathrooms-filter" class="mx-2">
                             @for($i = 1; $i < $max_bathrooms->bathrooms + 1; $i++)
-                                <option value="{{ $i }}">{{ $i }}</option>
+                                <option value="{{ $i }}" @if(isset($selected_min_bathrooms) && $i==$selected_min_bathrooms) selected @endif>{{ $i }}</option>
                                 @endfor
                         </select>
+
                         <input type="submit" value="Search" class="py-2 px-4 bg-blue-500 font-bold text-white rounded shadow ml-6">
                     </form>
                 </div>
@@ -54,13 +55,13 @@
             </div>
         </div>
 
-        {{-- @if(isset($selected_location))
-        <h1 class="text-center text-xl my-6">Properties in <b>{{ $selected_location->name }}</b></h1>
-        @endif --}}
+        @if(isset($selected_location))
+        <h1 class="text-center text-xl xl:text-2xl my-6">Properties in <b>{{ $selected_location->name }}</b></h1>
+        @endif
 
         <div class="main">
+            @if(count($properties) > 0)
             <div class="properties-grid grid grid-cols-3 gap-2 xl:grid-cols-4 p-4 ">
-                @if(isset($properties))
                 @foreach ($properties as $property)
                 <div class="property-card">
                     <a href="/properties/{{ $property->slug }}">
@@ -87,11 +88,10 @@
                     </div>
                 </div>
                 @endforeach
-                @else {
-                <p>No results found...</p>
-                }
-                @endif
             </div>
+            @else
+            <h2 class="text-center font-bold text-blue-400 text-xl mt-8">Sorry....Nothing found....</h2>
+            @endif
         </div>
 
     </div>
