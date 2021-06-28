@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
-
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +15,16 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+// Main Page
+Route::get('/', [PageController::class, 'index'])->name('index');
+
+// Home Page
+Route::get('/home', [PageController::class, 'home'])->name('home');
+
+// Contact Page
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+
+Route::post('/contact/validate', [ContactController::class, 'validateContactRequest'])->name('validateContact');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

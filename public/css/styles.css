@@ -14,8 +14,29 @@ h1 {
     letter-spacing: 2px;
 }
 
-h2 {
+h2, h3 {
     /* pink-500 */
     color: #EC4899;
 }
 
+#header {
+    height: 175px;
+    background-image: url(/img/assets/bg-500.jpg);
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+@media (min-width: 550px) {
+    #header{
+        height: 350px;
+    background-image: url(/img/assets/bg-1200.jpg);
+    }
+}
+
+@media (min-width: 1200px) {
+    #header{
+        height: 550px;
+    background-image: url(/img/assets/bg-2000.jpg);
+    }
+}
