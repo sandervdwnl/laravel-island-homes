@@ -48,7 +48,7 @@
                             <td class="border px-8 py-4">{{ $user->last_name }}, {{ $user->first_name}}</td>
                             <td class="border px-8 py-4">{{ $user->email }}</td>
                             <td class="border px-8 py-4">{{ $user->is_admin ? 'Yes' : 'No' }}</td>
-                            <td class="border px-8 py-4"></td>
+                            <td class="border px-8 py-4">{{ $user->properties->count() }}</td>
                             <td class="border px-8 py-4 text-green-500"><a href="/admin/users/{{ $user->id }}">Show</a></td>
                             <td class="border px-8 py-4 text-blue-500"><a href="/admin/users/{{ $user->id }}/edit">Edit</a></td>
                             <td class="border px-8 py-4 text-red-500">

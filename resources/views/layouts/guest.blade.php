@@ -26,15 +26,23 @@
 </head>
 <body>
 
-
-
     <div class="font-sans text-gray-900 antialiased">
         <div class="p-6 bg-white border-b border-gray-200 flex items-center">
             <a id="logo" href="{{ route('home') }}" class="bg-blue-100 p-5 rounded-full"><img src="{{ asset('img/assets/logo-500.png') }}" class="w-16"></a>
-            <ul class="flex">
-                <li class="text-lg ml-8"><a href="{{ route('home') }}">Home</a></li>
-                <li class="text-lg ml-8"><a href="{{ route('index') }}">Properties</a></li>
-                <li class="text-lg ml-8"><a href="{{ route('contact') }}">Contact</a></li>
+            <ul class="flex space-around">
+                <li class="text-lg lg:mx-4 font-bold"><a href="{{ route('home') }}">Home</a></li>
+                <li class="text-lg lg:mx-4 font-bold"><a href="{{ route('index') }}">Properties</a></li>
+                <li class="text-lg lg:mx-4 font-bold"><a href="{{ route('contact') }}">Contact</a></li>
+                @auth
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+
+                    <li class="text-lg lg:mx-4 font-bold"><a href="route('logout')" onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                            {{ __('Log Out') }}
+                        </a></li>
+                </form>
+                @endauth
             </ul>
         </div>
         {{ $slot }}

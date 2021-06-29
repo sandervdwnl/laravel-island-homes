@@ -16,6 +16,12 @@ use File;
 
 class PropertyController extends Controller
 {
+    // Contructor for Auth middleware on all methods, except index and show
+    public function __construct()
+    {
+    $this->middleware('auth')->except(['index', 'show']);
+    }
+
     /**
      * Display a listing of the resource.
      *

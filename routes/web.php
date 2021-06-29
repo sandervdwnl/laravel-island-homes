@@ -66,7 +66,9 @@ Route::group(['middleware' => 'auth'], function()
         Route::delete('{id}/delete', [\App\Http\Controllers\User\ProfileController::class, 'destroy']);
     });
 
-    // Route to Properties
-    Route::resource('properties', 'App\Http\Controllers\User\PropertyController');
+    
 
 });
+
+// Route to Properties
+Route::resource('properties', 'App\Http\Controllers\User\PropertyController');
