@@ -61,7 +61,7 @@
 
         <div class="main">
             @if(count($properties) > 0)
-            <div class="properties-grid grid grid-cols-3 gap-2 xl:grid-cols-4 p-4 ">
+            <div class="properties-grid grid grid-cols-2 gap-2 xl:grid-cols-4 p-4 max-w-7xl mx-auto">
                 @foreach ($properties as $property)
                 <div class="property-card">
                     <a href="/properties/{{ $property->slug }}">
