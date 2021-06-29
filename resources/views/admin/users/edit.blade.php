@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-4">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    This is the Admin - Create Users View!
+                    Edit User
                 </div>
 
                 <div class="container my-4 pb-2 pl-8 xl:text-lg text-center">

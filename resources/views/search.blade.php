@@ -83,7 +83,7 @@
                         </div>
                         <p class="text-center font-bold text-gray-500 mb-2">{{ ucwords($property->city) }}, {{
                             $property->location->name }}</p>
-                        <p class="text-center font-bold"><span class="price"></span>USD $ {{
+                        <p class="text-center font-bold"><span class="price"></span>USD &#36; {{
                             number_format($property->asking_price) }},-</p>
                     </div>
                 </div>

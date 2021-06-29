@@ -32,7 +32,7 @@
                     <p class="mb-4 text-gray-500">{{ $user->email }}</p>
                     <div class="py-4 ">
                         <a class="bg-blue-300 hover:bg-blue-200 text-white w-20 rounded py-2 px-8 mr-2 shadow" href="/user/{{ $user->id }}/edit">Edit Details</a>
-                        <form action="{{ $user->id }}/delete" method="post" class="inline">
+                        <form action="{{ $user->id }}/delete" method="post" class="mt-4 sm:mt-0 sm:inline">
                             @csrf
                             @method('delete')
                             <input type="submit" value="Delete" class="bg-red-300 inline hover:bg-red-200 text-white rounded py-2 px-8 mr-2 block shadow cursor-pointer" onclick="return confirm('Are you sure you want to delete your account')">

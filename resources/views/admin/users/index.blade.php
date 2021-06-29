@@ -22,13 +22,13 @@
 
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-4">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <p>This is the Admin - Users Overview!</p>
+                    <p>Users Overview</p>
                 </div>
-                <div class="py-2 px-4 bg-green-300 hover:bg-green-200 border-b border-gray-200 w-2/12 mt-4">
-                    <a href="/admin/users/create">Create New User</a>
+                <div class="py-2 px-4 bg-green-300 hover:bg-green-200 border-b border-gray-200 w-full lg:w-2/12 mt-4">
+                    <a href="/admin/users/create">&#43; Create New User</a>
                 </div>
 
-                <div class="container my-4 pb-2">
+                <div class="container my-4 pb-2 overflow-x-auto">
 
                     <table class="shadow-lg bg-white mx-auto w-full">
                         <tr>

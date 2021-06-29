@@ -81,6 +81,22 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            @if( Auth::user()->is_admin == true)
+            <x-nav-link href="/admin/users" :active="request()->routeIs('users')" class="w-full ml-4 text-base">
+                {{ __('Users') }}
+            </x-nav-link>
+            <x-nav-link href="/admin/properties" :active="request()->routeIs('properties')" class="w-full ml-4 text-base">
+                {{ __('Properties') }}
+            </x-nav-link>
+            @endif
+            @if( Auth::user()->is_admin == false)
+            <x-nav-link href="user/{{ Auth::user()->id }}" :active="request()->routeIs('profile')" class="w-full ml-4 text-base">
+                {{ __('User Profile') }}
+            </x-nav-link>
+            <x-nav-link href="/properties" :active="request()->routeIs('properties')" class="w-full ml-4 text-base">
+                {{ __('My Properties') }}
+            </x-nav-link>
+            @endif
         </div>
 
         <!-- Responsive Settings Options -->

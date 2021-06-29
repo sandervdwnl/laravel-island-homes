@@ -6,11 +6,10 @@
     </x-slot>
 
     <div class="pb-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="mx-auto sm:px-6 lg:px-8 w-full max-w-7xl">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-
-                <div class="search flex justify-center items-center my-8">
-                    <form action="{{ route('search') }}" method="GET">
+                <div class="search block md:flex justify-center items-center my-8">
+                    <form action="{{ route('search') }}" method="GET" class="grid md:flex text-center md:items-center">
                         {{-- Location --}}
                         <label for="Location">Location</label>
                         <select name="location-filter" class="mx-2">
@@ -36,7 +35,7 @@
                                 <option value="{{ $i }}">{{ $i }}</option>
                                 @endfor
                         </select>
-                        <input type="submit" value="Search" class="py-2 px-4 bg-blue-500 font-bold text-white rounded shadow ml-6">
+                        <input type="submit" value="Search &#x1F81E;" class="py-2 px-4 bg-blue-500 font-bold text-white rounded shadow mt-4 md:mt-0 md:ml-6">
                     </form>
                 </div>
 
@@ -54,12 +53,10 @@
             </div>
         </div>
 
-        {{-- @if(isset($selected_location))
-        <h1 class="text-center text-xl my-6">Properties in <b>{{ $selected_location->name }}</b></h1>
-        @endif --}}
+
 
         <div class="main">
-            <div class="properties-grid grid grid-cols-3 gap-2 xl:grid-cols-4 p-4 ">
+            <div class="properties-grid grid grid-cols-2 gap-2 xl:grid-cols-4 p-4 max-w-7xl mx-auto">
                 @if(isset($properties))
                 @foreach ($properties as $property)
                 <div class="property-card">
@@ -69,20 +66,20 @@
                         <img src="{{ str_replace ('.jpg', '_thumb.jpg', asset($property->feat_image_path)) }}" alt="{{ ucwords($property->title) }}">
                     </a>
                     <div class="property-details py-2">
-                        <div class="main-details flex mb-4 font-bold">
+                        <div class="main-details block md:flex mb-1 lg:mb-4 font-bold">
                             @if($property->status == 'For Sale')
-                            <div class="bg-green-400 text-white capitalize py-1 px-4 mr-4">For Sale</div>
+                            <div class="bg-green-400 text-white capitalize py-1 px-4 mr-4 text-center">For Sale</div>
                             @elseif($property->status == 'Pending')
-                            <div class="bg-yellow-500 text-white capitalize py-1 px-4 mr-4">Pending</div>
+                            <div class="bg-yellow-500 text-white capitalize py-1 px-4 mr-4 text-center">Pending</div>
                             @else
-                            <div class="bg-red-400 text-white capitalize py-1 px-4 mr-4">Sold</div>
+                            <div class="bg-red-400 text-white capitalize py-1 px-4 mr-4 text-center">Sold</div>
                             @endif
                             <p class="text-center py-1 px-4">{{ ucwords($property->street) }} {{ $property->number
                                 }}</a></p>
                         </div>
                         <p class="text-center font-bold text-gray-500 mb-2">{{ ucwords($property->city) }}, {{
                             $property->location->name }}</p>
-                        <p class="text-center font-bold"><span class="price"></span>USD $ {{
+                        <p class="text-center font-bold"><span class="price"></span>USD &#36; {{
                             number_format($property->asking_price) }},-</p>
                     </div>
                 </div>

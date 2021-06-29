@@ -63,7 +63,6 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
             'is_admin' => $is_admin,
         ]);
-
         $user->save();
 
         return $this->index()->with(["message" => "User "  . $user->first_name . " " . $user->last_name . " is created"]);
@@ -93,18 +92,6 @@ class UserController extends Controller
         $user = User::where('id', $id)->first();
 
         return view('admin.users.edit')->with('user', $user);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        
     }
 
     /**

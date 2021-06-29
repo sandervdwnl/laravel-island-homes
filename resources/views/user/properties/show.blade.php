@@ -8,11 +8,11 @@
     </x-slot>
 
     <div class="py-12">
-        <a href="{{ route('home') }}" class="btn m-4 bg-blue-500 text-white py-2 px-4 rounded shadow">Back To Overview</a>
+        <a href="{{ route('index') }}" class="btn m-2 lg:m-4 bg-blue-500 text-white py-2 px-4 rounded shadow">&#129052; Back To Overview</a>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200  shadow mb-4">
-                    <h1 class="font-bold xl:text-4xl text-center">{{ $property->title }}</h1>
+                    <h1 class="font-bold text-xl xl:text-4xl text-center">{{ $property->title }}</h1>
                 </div>
 
                 @if(isset($message))
@@ -56,60 +56,61 @@
                     @endforeach
                 </div>
 
-                {{-- Address --}}
+                <div class="details-wrapper px-2">
+                    {{-- Address --}}
 
-                <p class="font-bold text-lg">{{ ucwords($property->street) }} {{ $property->number }},<span class="text-gray-500"> {{ ucwords($property->city) }}, {{ $property->location->name }}</span></p>
+                    <p class="font-bold text-lg text-center md:text-left">{{ ucwords($property->street) }} {{ $property->number }},<span class="text-gray-500 text-center md:text-left"> {{ ucwords($property->city) }}, {{ $property->location->name }}</span></p>
 
-                {{-- Status / Price --}}
+                    {{-- Status / Price --}}
 
-                <div class="my-4 flex">
-                    <p class="font-bold mr-4 text-lg">Price: <span class="font-bold text-indigo-700">USD $ {{ number_format($property->asking_price) }},- </span></p>
-                    <p class="font-bold text-lg"> Status: <span class="font-bold">{{ $property->status }}</span></p>
-                </div>
-
-                {{-- Description --}}
-
-                {{-- The Prose class formats the content received from the tinyMCE input. --}}
-                {{-- Standard this causes an smaller, ideal width which is overridden by class max-w-none --}}
-                <article class="description mb-4">
-                    <h2 class="text-center text-2xl font-bold my-6">Description</h2>
-                    <div class="description-content prose max-w-none">
-                        {!! $property->description !!}
+                    <div class="my-4 md:flex text-center md:text-left">
+                        <p class="font-bold mr-4 text-lg">Price: <span class="font-bold text-indigo-700">USD &#36; {{ number_format($property->asking_price) }},- </span></p>
+                        <p class="font-bold text-lg"> Status: <span class="font-bold">{{ $property->status }}</span></p>
                     </div>
-                </article>
 
-                {{-- Details --}}
+                    {{-- Description --}}
 
-                <h2 class="text-center text-2xl font-bold my-6">Details</h2>
+                    {{-- The Prose class formats the content received from the tinyMCE input. --}}
+                    {{-- Standard this causes an smaller, ideal width which is overridden by class max-w-none --}}
+                    <article class="description mb-4">
+                        <h2 class="text-center text-2xl font-bold my-6">Description</h2>
+                        <div class="description-content prose max-w-none">
+                            {!! $property->description !!}
+                        </div>
+                    </article>
 
-                <div class="details flex flex-wrap w-full mx-auto text-base">
-                    <div class="w-1/2 mb-2 border-b-2 border-grey-300 border-dotted"><span>Property Type:</span></div>
-                    <div class="w-1/2 mb-2 border-b-2 border-grey-300 border-dotted"><span>{{ $property->property_type }}</span></div>
-                    <div class="w-1/2 mb-2 border-b-2 border-grey-300 border-dotted"><span>Built In:</span></div>
-                    <div class="w-1/2 mb-2 border-b-2 border-grey-300 border-dotted"><span>{{ $property->built_in }}</span></div>
-                    <div class="w-1/2 mb-2 border-b-2 border-grey-300 border-dotted"><span>Indoor Area Size:</span></div>
-                    <div class="w-1/2 mb-2 border-b-2 border-grey-300 border-dotted"><span>{{ $property->area_size_indoor }}</span></div>
-                    <div class="w-1/2 mb-2 border-b-2 border-grey-300 border-dotted"><span>Outdoor Area Size:</span></div>
-                    <div class="w-1/2 mb-2 border-b-2 border-grey-300 border-dotted"><span>{{ $property->area_size_outdoor }}</span></div>
-                    <div class="w-1/2 mb-2 border-b-2 border-grey-300 border-dotted"><span>Bedrooms:</span></div>
-                    <div class="w-1/2 mb-2 border-b-2 border-grey-300 border-dotted"><span>{{ $property->bedrooms }}</span></div>
-                    <div class="w-1/2 mb-2 border-b-2 border-grey-300 border-dotted"><span>Bathrooms:</span></div>
-                    <div class="w-1/2 mb-2 border-1b-2border-grey-300 border-dotted"><span>{{ $property->bathrooms }}</span></div>
+                    {{-- Details --}}
+
+                    <h2 class="text-center text-2xl font-bold my-6">Details</h2>
+
+                    <div class="details flex flex-wrap w-full mx-auto text-base">
+                        <div class="w-1/2 mb-2 border-b-2 border-grey-300 border-dotted"><span>Property Type:</span></div>
+                        <div class="w-1/2 mb-2 border-b-2 border-grey-300 border-dotted"><span>{{ $property->property_type }}</span></div>
+                        <div class="w-1/2 mb-2 border-b-2 border-grey-300 border-dotted"><span>Built In:</span></div>
+                        <div class="w-1/2 mb-2 border-b-2 border-grey-300 border-dotted"><span>{{ $property->built_in }}</span></div>
+                        <div class="w-1/2 mb-2 border-b-2 border-grey-300 border-dotted"><span>Indoor Area Size:</span></div>
+                        <div class="w-1/2 mb-2 border-b-2 border-grey-300 border-dotted"><span>{{ $property->area_size_indoor }}</span></div>
+                        <div class="w-1/2 mb-2 border-b-2 border-grey-300 border-dotted"><span>Outdoor Area Size:</span></div>
+                        <div class="w-1/2 mb-2 border-b-2 border-grey-300 border-dotted"><span>{{ $property->area_size_outdoor }}</span></div>
+                        <div class="w-1/2 mb-2 border-b-2 border-grey-300 border-dotted"><span>Bedrooms:</span></div>
+                        <div class="w-1/2 mb-2 border-b-2 border-grey-300 border-dotted"><span>{{ $property->bedrooms }}</span></div>
+                        <div class="w-1/2 mb-2 border-b-2 border-grey-300 border-dotted"><span>Bathrooms:</span></div>
+                        <div class="w-1/2 mb-2 border-1b-2border-grey-300 border-dotted"><span>{{ $property->bathrooms }}</span></div>
+                    </div>
+
+                    {{-- Location --}}
+
+                    <h2 class="text-center text-2xl font-bold my-6">Location</h2>
+
+                    <p class="text-gray-700 mb-4"><b>{{ ucwords($property->street) }} {{ $property->number }}</b> In <b>{{ ucwords($property->city) }}, {{ $property->location->name }}</b></p>
+
+                    <div>
+                        {{-- Embedded OSM Map with manipulated URL --}}
+                        {{-- Parameters for bbox: bbox = min Longitude , min Latitude , max Longitude , max Latitude  --}}
+                        <iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox={{ $property->longitude }}%2C{{ $property->latitude }}%2C{{ $property->longitude}}%2C{{ $property->latitude }}&amp;layer=mapnik&amp;marker={{ $property->latitude }}%2C{{ $property->longitude}}" style="border: 1px solid black"></iframe><br /><small><a href="https://www.openstreetmap.org/?mlat={{ $property->latitude }}&amp;mlon={{ $property->longitude }}#map=13/12.1676/-68.2732">Click here for a full-size map</a></small>
+
+                    </div>
                 </div>
-
-                {{-- Location --}}
-
-                <h2 class="text-center text-2xl font-bold my-6">Location</h2>
-
-                <p class="text-gray-700 mb-4"><b>{{ ucwords($property->street) }} {{ $property->number }}</b> In <b>{{ ucwords($property->city) }}, {{ $property->location->name }}</b></p>
-
-                <div>
-                    {{-- Embedded OSM Map with manipulated URL --}}
-                    {{-- Parameters for bbox: bbox = min Longitude , min Latitude , max Longitude , max Latitude  --}}
-                    <iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox={{ $property->longitude }}%2C{{ $property->latitude }}%2C{{ $property->longitude}}%2C{{ $property->latitude }}&amp;layer=mapnik&amp;marker={{ $property->latitude }}%2C{{ $property->longitude}}" style="border: 1px solid black"></iframe><br /><small><a href="https://www.openstreetmap.org/?mlat={{ $property->latitude }}&amp;mlon={{ $property->longitude }}#map=13/12.1676/-68.2732">Click here for a full-size map</a></small>
-
-                </div>
-
             </div>
 
         </div>

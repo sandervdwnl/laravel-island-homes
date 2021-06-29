@@ -23,15 +23,15 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-4">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <p>My Properties</p>
-                    <div class="py-2 px-4 bg-green-300 hover:bg-green-200 border-b border-gray-200 w-2/12 mt-4">
-                        <a href="/properties/create">Add A Property:</a>
+                    <div class="py-2 px-4 bg-green-300 hover:bg-green-200 border-b border-gray-200 w-full lg:w-2/12 mt-4 rounded">
+                        <a href="/properties/create">&#43; Add A Property:</a>
                     </div>
 
-                    <div class="container my-4 pb-2">
+                    <div class="container my-4 pb-2 overflow-x-auto">
 
                         @if (!empty($properties))
 
-                        <table class="shadow-lg bg-white mx-auto w-full">
+                        <table class="shadow-lg bg-white mx-auto w-full overflow-x-auto">
                             <tr>
                                 <th class="bg-yellow-100 border text-left px-8 py-4">Title</th>
                                 <th class="bg-yellow-100 border text-left px-8 py-4">Show</th>

@@ -59,7 +59,7 @@
                                         <label class="block text-gray-500 text-base font-bold mb-2" for="asking_price">
                                             Asking Price*
                                         </label>
-                                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-500 leading-tight focus:outline-none focus:shadow-outline" id="asking_price" name="asking_price" type="number" placeholder="Price in $ USD" value="{{ $property->asking_price }}" min="10000" max="1000000000" step="1" required>
+                                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-500 leading-tight focus:outline-none focus:shadow-outline" id="asking_price" name="asking_price" type="number" placeholder="Price in &#36; USD" value="{{ $property->asking_price }}" min="10000" max="1000000000" step="1" required>
                                         <p class="text-left text-indigo-500"><small>Please enter a price without
                                                 decimals</small></p>
                                     </div>

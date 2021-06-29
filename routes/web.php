@@ -16,10 +16,10 @@ use App\Http\Controllers\SearchController;
 */
 
 // Main Page
-Route::get('/', [PageController::class, 'index'])->name('index');
+Route::get('/index', [PageController::class, 'index'])->name('index');
 
 // Home Page
-Route::get('/home', [PageController::class, 'home'])->name('home');
+Route::get('/', [PageController::class, 'home'])->name('home');
 
 // Contact Page
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
